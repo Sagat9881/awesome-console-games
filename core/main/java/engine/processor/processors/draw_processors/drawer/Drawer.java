@@ -1,16 +1,12 @@
 package engine.processor.processors.draw_processors.drawer;
 
 
-import engine.Player;
-import scenes.plane.cartesian.Cartesian;
-import scenes.scens.OObject;
-
-import java.util.Collection;
+import scenes.scens.Scene;
 
 /**
  * Рисует сцену в указанный поток вывода
  */
-public interface Drawer {
+public interface Drawer<SM> {
 
-    Object drawFrame(Player player, Collection<OObject> objects, Cartesian plane);
+        SM drawFrame(Scene<SM> scene);
 }

@@ -1,23 +1,20 @@
 package scenes.plane.cartesian;
 
-import lombok.AllArgsConstructor;
+import scenes.scens.Scene;
 
-@AllArgsConstructor
-public class CartesianPlane implements Cartesian {
-    protected int x;
-    protected int y ;
-    @Override
-    public int getXMax() {
-        return x;
+/**
+ * 'Cartesian' - 'Декартова' (плоскость)
+ * Интерфейс для работы с прямоугольной (декартовой) системой координат
+ */
+public interface CartesianPlane extends Plane {
+
+    int getXMax();
+
+    int getYMax();
+
+
+    default <S extends Scene> S getVisiblePlane() {
+        return getVisiblePlane(this.getXMax(), this.getYMax());
     }
 
-    @Override
-    public int getYMax() {
-        return y;
-    }
-
-    @Override
-    public int[] getCursor() {
-        return new int[0];
-    }
 }

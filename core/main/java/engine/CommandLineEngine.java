@@ -55,7 +55,7 @@ public class CommandLineEngine implements Engine {
         context = buildContext();
         inputProcessor.processInput(System.in, context);
         while (exitFlag) {// пока просто заглушка в качестве костыля, потушить можно будет только убив процесс, из игры этот флаг не поменять :)
-            // обработка ввода, изменение числовых показателей состояний объектов контекста (движения, прыжки) за 1 шаг цикла
+            // обработка ввода, изменение числовых показателей состояний объектов контекста ( за 1 шаг цикла
             inputProcessor.process(context);
             // изменение объектов по обновленным состояниям
             actorProcesser.process(context);

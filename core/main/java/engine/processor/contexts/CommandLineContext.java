@@ -4,6 +4,7 @@ package engine.processor.contexts;
 import actors.Actor;
 import engine.Player;
 import lombok.Builder;
+import scenes.plane.cartesian.Plane;
 import scenes.scens.Scene;
 
 import java.util.Collections;
@@ -19,15 +20,21 @@ import java.util.Map;
 @Builder
 public class CommandLineContext implements Context {
     private final Map<Long, Scene> scenes = new HashMap<>();
-    private Scene currentScenes;
+    private Plane plane;
+
+    public Map<Long, Actor> getActors() {
+        return actors;
+    }
+
     private final Map<Long, Actor> actors = new HashMap<>();
 
     private final Player player;
+    private final KeyState keyState = new KeyState();
 
 
     @Override
-    public Scene getCurrentScene() {
-        return currentScenes != null ? currentScenes : Scene.defaultScene();
+    public Plane getCurrentPlane() {
+        return plane;
     }
 
     @Override
@@ -41,8 +48,13 @@ public class CommandLineContext implements Context {
     }
 
     @Override
-    public void setScene(Scene scene) {
-        this.currentScenes = scene;
+    public void setScene(Plane scene) {
+        this.plane = scene;
+    }
+
+    @Override
+    public KeyState getKeyState() {
+        return keyState;
     }
 
 
